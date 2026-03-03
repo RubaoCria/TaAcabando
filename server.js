@@ -11,10 +11,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// 🔥 Rota principal (para testar se API está online)
+app.get("/", (req, res) => {
+  res.send("API Barbearia TCC Online 🚀");
+});
+
+// Rotas do sistema
 app.use("/auth", authRoutes);
 app.use("/agendamentos", agendamentoRoutes);
 app.use("/dashboard", dashboardRoutes);
 
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000 🚀");
+// ⚠️ IMPORTANTE para funcionar no Render
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT} 🚀`);
 });
