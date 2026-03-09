@@ -17,12 +17,13 @@ async function register(req, res) {
 
     res.json({ mensagem: "Usuário registrado com sucesso!" });
 
-} catch (error) {
-  console.error("ERRO REGISTER:", error);
-  res.status(500).json({
-    erro: "Erro ao registrar usuário",
-    detalhe: error.message
-  });
+  } catch (error) {
+    console.error("ERRO REGISTER:", error);
+    res.status(500).json({
+      erro: "Erro ao registrar usuário",
+      detalhe: error.message
+    });
+  }
 }
 
 async function login(req, res) {
@@ -58,13 +59,13 @@ async function login(req, res) {
       tipo: usuario.tipo
     });
 
-} catch (error) {
-  console.error("ERRO LOGIN:", error);
-  res.status(500).json({
-    erro: "Erro no servidor",
-    detalhe: error.message
-  });
-}
+  } catch (error) {
+    console.error("ERRO LOGIN:", error);
+    res.status(500).json({
+      erro: "Erro no servidor",
+      detalhe: error.message
+    });
+  }
 }
 
 module.exports = { register, login };
